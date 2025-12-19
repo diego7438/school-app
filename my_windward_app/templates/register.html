@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>
+            Register - My Windward App
+        </title>
+        <style>
+            body { font-family: monospace; max-width: 400px; margin: 50px auto; padding: 20px;
+            border: 1px solid #cc4; border-radius: 5px; }
+            input, select { display: block; margin-bottom: 10px; width: 95%; padding: 8px; }
+            button { padding: 10px 15px; }
+            a { color: #007bff; }
+        </style>
+    </head>
+    <body>
+        <h1>
+            Register New User
+        </h1>
+        <form id="register-form">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+            <label for="role">Role</label>
+            <select id="role" name="role">
+                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
+            </select>
+            <button type="submit">Register</button>
+        </form>
+        <div id="message"></div>
+        <p><a href="/">Already have an account? Go here to login</a></p> 
+
+        <script>
+            const registerForm = document.getElementById('register-form');
+            const messageDiv = document.getElementById('message');
+
+            registerForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+
+                const formData = new FormData(registerForm);
+                const data = Object.fromEntries(formData.entries());
+
+                const response = await fetch('/auth/register', {
+                    method: 'POST',
+                    headers : { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                messageDiv.textContent = result.message || result.error;
+                if (response.ok) {
+                    // Redirect to the dashboard immediately
+                    window.location.href = '/api/profile/';
+                } else {
+                    messageDiv.style.color = 'pink';
+                }
+                
+            })
+        </script>
+    </body>
+</html>

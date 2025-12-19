@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Teacher Dashboard</title>
+        <style>
+            body { font-family: sans-serif; max-width: 800px; margin: 50px auto; padding: 20px; }
+            table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+            th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+            th { background-color: #f2f2f2; }
+            h1 { color: #400; }
+            a { color: #007bff; text-decoration: none; }
+        </style>
+        </head>
+        <body>
+            <h1>🍎 Teacher Dashboard</h1>
+            <p><a href="/api/profile/">&larr; Back to Profile</a></p>
+
+            <h2>Student Roster</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Grade</th>
+                        <th>Role</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students %}
+                    <tr>
+                        <td>{{ student['id'] }}</td>
+                        <td>{{ student['username'] }}</td>
+                        <td>
+                            <form action="/teacher/grade" method="post" style="margin: 0;">
+                                <input type="hidden" name="user_id" value="{{ student['id'] }}">
+                                <input type="text" name="grade" value="{{ student['grade'] or '' }}" placeholder="-" size="5">
+                                <button type="submit">Save</button>
+                            </form>
+                        </td>
+                        <td>{{ student['role'] }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="3">No students registered yet.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </body>
+        </html>

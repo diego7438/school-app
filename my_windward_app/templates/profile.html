@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Your Profile</title>
+        <style>
+            body { font-family: sans-serif; max-width: 600px; margin: 50px auto; 
+                padding: 20px; border: 1px solid #ccc; border-radius: 5px; }
+            h1 { color: #166 }
+            p { font-size: 1.1em; }
+            strong { color: #400; }
+        </style>
+    </head>
+    <body>
+        <h1>Welcome, {{ user.username }}!</h1>
+        <p>This is your user profile page.</p>
+        <p><strong>User ID:</strong> {{ user.id }}</p>
+        <p><strong>Role:</strong> {{ user.role }}</p>
+        <p><a href="/api/announcements/">View Announcements</a></p>
+        <p><a href="/api/rotation/">Check Daily Schedule</a></p>
+
+        {% if user.role == 'teacher' %}
+        <p><a href="/teacher/dashboard">Go to Teacher Dashboard</a></p>
+        {% endif %}
+
+        <br>
+        <button id="logout-button">Logout</button>
+
+        <script>
+            const logoutButton = document.getElementById('logout-button');
+
+            logoutButton.addEventListener('click', async () => {
+                const response = await fetch('/auth/logout', {
+                    method: 'POST'
+                });
+
+                if (response.ok) {
+                    // if logout was successful, redirect to the login page
+                    window.location.href = '/';
+                }
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,7 @@
+# Ignore the database file
+instance/
+*.sqlite
+
+# Ignore compiled python files
+__pycache__/
+*.pyc
