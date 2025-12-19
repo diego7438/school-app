@@ -12,6 +12,7 @@ bp = Blueprint('profiles', __name__, url_prefix='/api/profile')
 @login_required # this is the new bouncer in action
 def get_profile():
     # because of @login_required, we know g.user is set.
+    # g.user is a global variable provided by Flask for the current request
     # we can now return the logged_in user's info.
     # note: we don't want to send the password hash back to the client.
     user_profile = {

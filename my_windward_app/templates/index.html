@@ -36,7 +36,7 @@
             const formData = new FormData(loginForm);
             const data = Object.fromEntries(formData.entries());
 
-            // send the data to our /auth/login API endpoint
+            // send the username/password to our /auth/login API endpoint
             const response = await fetch('/auth/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },

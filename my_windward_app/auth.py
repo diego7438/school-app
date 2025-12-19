@@ -13,6 +13,7 @@ bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 def login_required(view):
     # a decorator to protect views that require a login
+    # This wraps the view function and checks if a user is logged in before running it
     @functools.wraps(view)
     def wrapped_view(**kwargs):
         if g.user is None:
@@ -25,6 +26,7 @@ def login_required(view):
 
 def role_required(role):
     # a decorator (bouncer) to protect views that require certain roles.
+    # Usage: @role_required('teacher')
     def decorator(view):
         @functools.wraps(view)
         def wrapped_view(**kwargs):
@@ -43,6 +45,7 @@ def role_required(role):
 @bp.before_app_request
 def load_logged_in_user():
     # if a user id is stored in the session, load the user object from the database
+    # This runs before every single request to checking who is visiting
     user_id = session.get('user_id')
 
     if user_id is None:
@@ -73,6 +76,7 @@ def register():
             try:
                 # attempt to insert the new user into the database
                 # we store the HASH of the password, never the password itself.
+                # pbkdf2:sha256 is a strong hashing algorithm provided by Werkzeug
                 # if a role is provided, we insert it, otherwise the DB default is used.
                 cursor = None
                 if role: 

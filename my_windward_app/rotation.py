@@ -37,14 +37,17 @@ def get_rotation_for_date(m, d):
     Handles weekends, holidays, and special schedules.
     """
     # 1. Find which week this date belongs to
+    # We loop through the master schedule to find the week starting near this date
     rotations = get_week_rotation(m, d)
     if rotations is None:
         return None
 
     # 2. Unpack the data for that week
+    # blocks is the list of rotation days (e.g., [1, 2, 3, 4, 5])
     month, date, blocks, days_off = rotations
     
     # 3. Handle days off (insert None into the schedule)
+    # We create a copy of the blocks so we don't modify the original data
     adjusted_blocks = list(blocks)
     if days_off is not None:
         if isinstance(days_off, int):
@@ -54,6 +57,7 @@ def get_rotation_for_date(m, d):
                 adjusted_blocks.insert(day_index - 1, None)
 
     # 4. Calculate which day of the week it is (0=Mon, 1=Tue, etc.)
+    # We use datetime objects to calculate the exact number of days from the start of the week
     year_date2 = get_year_from_schedule(m)
     year_date1 = get_year_from_schedule(month)
     date2 = dt.date(year_date2, m, d)
@@ -80,6 +84,7 @@ def api_get_rotation(month, day):
         rotation_info = get_rotation_for_date(month, day)
 
         if rotation_info and rotation_info[0] is not None:
+            # Return the rotation number and the day name (e.g., "MON")
             result = {"rotation": rotation_info[0], "day_of_week": rotation_info[1]}
             return jsonify(result)
         else:

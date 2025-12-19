@@ -28,6 +28,7 @@ def create_app():
         return render_template('index.html')
 
     # import and register the blueprint from the factory
+    # Blueprints allow us to split our code into multiple files (modules)
     from . import announcements
     app.register_blueprint(announcements.bp, url_prefix='/api/announcements')
     

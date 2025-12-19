@@ -40,9 +40,11 @@
             registerForm.addEventListener('submit', async (event) => {
                 event.preventDefault();
 
+                // Convert form fields to a JSON object
                 const formData = new FormData(registerForm);
                 const data = Object.fromEntries(formData.entries());
 
+                // Send registration data to the server
                 const response = await fetch('/auth/register', {
                     method: 'POST',
                     headers : { 'Content-Type': 'application/json' },

@@ -15,6 +15,7 @@ def dashboard():
     """
     db = get_db_connection()
     # get all users who are students
+    # We filter by role='student' so teachers don't see other teachers in the list
     students = db.execute(
         "SELECT * FROM users WHERE role = 'student'"
     ).fetchall()
@@ -33,6 +34,7 @@ def update_grade():
     grade = request.form['grade']
 
     db = get_db_connection()
+    # SQL Update command to save the new grade for the specific user ID
     db.execute(
         'UPDATE users SET grade = ? WHERE id = ?',
         (grade, user_id)

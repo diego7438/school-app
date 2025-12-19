@@ -13,6 +13,7 @@ os.makedirs(os.path.dirname(DATABASE_PATH), exist_ok=True)
 connection = sqlite3.connect(DATABASE_PATH)
 
 # Open and execute the schema file
+# This runs the SQL commands in schema.sql to create tables
 with open(SCHEMA_PATH) as f:
     connection.executescript(f.read())
 

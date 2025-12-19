@@ -40,6 +40,7 @@
             const todayBtn = document.getElementById('today-btn');
             const resultDiv = document.getElementById('result');
 
+            // Event listener for the Check Schedule button
             checkBtn.addEventListener('click', async () => {
                 const month = document.getElementById('month').value;
                 const day = document.getElementById('day').value;
@@ -72,6 +73,7 @@
                 }
             })
 
+            // Helper to automatically fill in today's date
             todayBtn.addEventListener('click', () => {
                 const now = new Date();
                 document.getElementById('month').value = now.getMonth() + 1 // months are 0-indexed in JS

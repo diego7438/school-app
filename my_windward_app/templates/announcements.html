@@ -21,7 +21,7 @@
         </h1>
         <p><a href="/api/profile/">&larr; Back to Profile</a></p>
 
-        <!-- Only show this form if the user is a teacher -->
+         <!-- Only show the "Post New" form if the logged-in user is a teacher -->
          {% if g.user and g.user.role== 'teacher' %}
          <div class="teacher-controls">
             <h3>
@@ -38,6 +38,7 @@
          {% endif %}
 
          <div id="announcements-list">
+            <!-- Loop through all announcements from the database -->
             {% for post in posts %}
             <div class="announcement">
                 <div class="meta"> Posted by <strong>{{ post.author }}</strong> on {{ post.created }}</div>
@@ -53,6 +54,7 @@
                     e.preventDefault();
                     const message = document.getElementById('message').value;
 
+                   // Send the new announcement to the API
                    const response = await fetch('/api/announcements/', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json'},

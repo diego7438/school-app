@@ -10,6 +10,7 @@ con = sqlite3.connect(DATABASE_PATH)
 cur = con.cursor()
 
 try:
+    # Attempt to add the 'grade' column to the existing users table
     cur.execute("ALTER TABLE users ADD COLUMN grade TEXT")
     print("Successfully added 'grade' column to users table!")
 except sqlite3.OperationalError:

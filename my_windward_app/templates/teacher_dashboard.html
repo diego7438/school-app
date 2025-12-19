@@ -27,11 +27,13 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- Loop through each student passed from the backend -->
                     {% for student in students %}
                     <tr>
                         <td>{{ student['id'] }}</td>
                         <td>{{ student['username'] }}</td>
                         <td>
+                            <!-- Inline form to update the grade -->
                             <form action="/teacher/grade" method="post" style="margin: 0;">
                                 <input type="hidden" name="user_id" value="{{ student['id'] }}">
                                 <input type="text" name="grade" value="{{ student['grade'] or '' }}" placeholder="-" size="5">

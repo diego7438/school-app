@@ -20,6 +20,7 @@
         <p><a href="/api/announcements/">View Announcements</a></p>
         <p><a href="/api/rotation/">Check Daily Schedule</a></p>
 
+        <!-- Show link to teacher dashboard only if user is a teacher -->
         {% if user.role == 'teacher' %}
         <p><a href="/teacher/dashboard">Go to Teacher Dashboard</a></p>
         {% endif %}
@@ -31,6 +32,7 @@
             const logoutButton = document.getElementById('logout-button');
 
             logoutButton.addEventListener('click', async () => {
+                // Call the logout API endpoint
                 const response = await fetch('/auth/logout', {
                     method: 'POST'
                 });

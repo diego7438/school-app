@@ -1,5 +1,7 @@
+-- Drop tables if they exist to start fresh
 DROP TABLE if EXISTS announcements;
 
+-- Create the announcements table
 CREATE TABLE announcements (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     author TEXT NOT NULL,
@@ -9,6 +11,7 @@ CREATE TABLE announcements (
 
 DROP TABLE IF EXISTS users;
 
+-- Create the users table with role and grade columns
 CREATE TABLE users (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   username TEXT UNIQUE NOT NULL,
