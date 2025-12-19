@@ -26,19 +26,30 @@ A full-stack Flask application designed for Windward School students and teacher
     cd school-app
     ```
 
-2.  **Set up the environment:**
+2.  **Install Dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3.  **Initialize the Database:**
+    Since the database file is not tracked in git, you must initialize it first:
+    ```bash
+    python3 init_db.py
+    ```
+
+4.  **Set up the environment:**
     ```bash
     # Mac/Linux
     export FLASK_APP=my_windward_app
     export FLASK_DEBUG=1
     ```
 
-3.  **Run the server:**
+5.  **Run the server:**
     ```bash
     python3 -m flask run
     ```
 
-4.  **Open in Browser:**
+6.  **Open in Browser:**
     Go to `http://127.0.0.1:5000`
 
 ## 📄 License
