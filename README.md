@@ -52,10 +52,16 @@ A full-stack Flask application designed for Windward School students and teacher
 6.  **Open in Browser:**
     Go to `http://127.0.0.1:5000`
 
+## ☁️ Deployment (Render)
+
+*   **Build Command:** `pip install -r requirements.txt && python3 init_db.py`
+    *   *Note: This installs dependencies and resets the database.*
+*   **Start Command:** `gunicorn "my_windward_app:create_app()"`
+
 ## 🔮 Future Roadmap (Winter Break Goals)
 
 *   [ ] **🤖 AI Assistant:** Implement a Natural Language Processing (NLP) chatbot to answer questions about the schedule (e.g., "Is there school next Friday?").
-*   [ ] **☁️ Deployment:** Host the application on the web so students can access it from their phones.
+*   [x] **☁️ Deployment:** Host the application on the web so students can access it from their phones.
 *   [ ] **🎨 UI Polish:** Upgrade the frontend with a CSS framework for a mobile-responsive design.
 
 ## 📄 License
