@@ -1,7 +1,9 @@
-# Ignore the database file
-instance/
-*.sqlite
+# Ignore Mac system files
+.DS_Store
 
-# Ignore compiled python files
+# Ignore Python cache and local database
 __pycache__/
-*.pyc
+instance/
+
+# Ignore my private notes
+DEPLOYMENT_NOTES.md
