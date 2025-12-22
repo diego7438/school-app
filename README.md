@@ -9,6 +9,7 @@ A full-stack Flask application designed for Windward School students and teacher
     *   **Students:** View daily rotation, check announcements, see profile.
     *   **Teachers:** Post announcements, view student roster, assign grades.
 *   **📅 Daily Rotation Checker:** Automatically calculates the specific class rotation (Days 1-6) for any date in the 2025-26 school year, handling holidays and weekends.
+*   **🤖 AI Chatbot:** Smart assistant that answers questions about the schedule (e.g., "What is the rotation tomorrow?" or "Is there school on Monday?").
 *   **📢 Announcements Board:** Digital bulletin board for school news.
 *   **📊 Teacher Dashboard:** Interface for teachers to manage student grades.
 
@@ -66,7 +67,7 @@ A full-stack Flask application designed for Windward School students and teacher
 
 ## 🔮 Future Roadmap (Winter Break Goals)
 
-*   [ ] **🤖 AI Assistant:** Implement a Natural Language Processing (NLP) chatbot to answer questions about the schedule (e.g., "Is there school next Friday?").
+*   [x] **🤖 AI Assistant:** Implement a Natural Language Processing (NLP) chatbot to answer questions about the schedule (e.g., "Is there school next Friday?").
 *   [x] **☁️ Deployment:** Hosted on Render with a production-ready web server (Gunicorn).
 *   [x] **🎨 UI Polish:** Refactored frontend to use a centralized CSS stylesheet and base template for a consistent, professional, dark-mode theme.
 

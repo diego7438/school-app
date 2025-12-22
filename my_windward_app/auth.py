@@ -135,6 +135,11 @@ def login():
         # this is our "digital hall pass".
         session.clear()
         session['user_id'] = user['id']
+
+        # If "Remember Me" was checked, make the session permanent (lasts 31 days by default)
+        if data.get('remember') == 'on':
+            session.permanent = True
+
         return jsonify({"message": "Login successful :)."}), 200
     
     # but if there was an error, return it
