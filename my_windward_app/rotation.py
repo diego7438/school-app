@@ -53,7 +53,7 @@ def get_rotation_for_date(m, d):
         if isinstance(days_off, int):
             adjusted_blocks.insert(days_off - 1, None)
         elif isinstance(days_off, list):
-            for day_index in sorted(days_off, reverse=True):
+            for day_index in sorted(days_off):
                 adjusted_blocks.insert(day_index - 1, None)
 
     # 4. Calculate which day of the week it is (0=Mon, 1=Tue, etc.)

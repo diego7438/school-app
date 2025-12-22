@@ -40,7 +40,14 @@
                 const typingDiv = document.createElement('div');
                 typingDiv.id = 'typing-indicator';
                 typingDiv.classList.add('typing-indicator');
-                typingDiv.textContent = 'Bot is thinking...';
+                
+                // Create 3 dots for the animation
+                for (let i = 0; i < 3; i++) {
+                    const dot = document.createElement('div');
+                    dot.classList.add('dot');
+                    typingDiv.appendChild(dot);
+                }
+                
                 chatBox.appendChild(typingDiv);
                 chatBox.scrollTop = chatBox.scrollHeight;
             }
