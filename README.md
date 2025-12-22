@@ -18,6 +18,12 @@ A full-stack Flask application designed for Windward School students and teacher
 *   **Database:** SQLite
 *   **Frontend:** HTML, CSS, JavaScript
 
+## 📚 Architecture Concepts
+
+*   **Blueprints:** This project uses Flask Blueprints to organize code into modular components (e.g., `auth`, `teacher`, `chat`). This keeps the codebase clean and scalable, rather than having one massive file.
+*   **Application Factory:** We use the `create_app()` function to set up the app, which allows for better testing and configuration management.
+*   **Decorators:** Custom Python decorators (like `@role_required`) are used to enforce security permissions on specific routes.
+
 ## ⚙️ How to Run Locally
 
 1.  **Clone the repository:**
