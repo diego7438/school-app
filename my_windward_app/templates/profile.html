@@ -1,18 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Your Profile</title>
-        <style>
-            body { font-family: sans-serif; max-width: 600px; margin: 50px auto; 
-                padding: 20px; border: 1px solid #ccc; border-radius: 5px; }
-            h1 { color: #166 }
-            p { font-size: 1.1em; }
-            strong { color: #400; }
-        </style>
-    </head>
-    <body>
+{% extends "base.html" %}
+
+{% block title %}Your <Profile>% endblock %</Profile>
+
+{% block content %}
+
         <h1>Welcome, {{ user.username }}!</h1>
         <p>This is your user profile page.</p>
         <p><strong>User ID:</strong> {{ user.id }}</p>
@@ -44,5 +35,4 @@
                 }
             });
         </script>
-    </body>
-</html>
+{% endblock %}

@@ -1,21 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>
-            Announcements
-        </title>
-        <style>
-            body { font-family: Geneva; max-width: 800px; margin: 50px auto; padding: 20px; }
-            .announcement { border: 1px solid #bed; padding: 15px; margin-bottom: 15px; border-radius: 5px; 
-            background-color: #f9f9f9}
-            .meta { color: #667; font-size: 0.9em; margin-bottom: 5px; }
-            .teacher-controls { border: 2px solid #d9534d; padding: 15px; margin-bottom: 30px; border-radius: 5px; }
-            textarea { width: 100%; height: 80px; margin-bottom: 10px; }
-        </style>
-    </head>
-    <body>
+{% extends "base.html" %}
+
+{% block title %}Announcements{% endblock %}
+
+{% block content %}
         <h1>
             School Announcements
         </h1>
@@ -23,7 +10,7 @@
 
          <!-- Only show the "Post New" form if the logged-in user is a teacher -->
          {% if g.user and g.user.role== 'teacher' %}
-         <div class="teacher-controls">
+         <div>
             <h3>
                 Post New Announcement
             </h3>
@@ -69,5 +56,4 @@
                 });
             }
          </script>
-    </body>
-</html>
+{% endblock %}

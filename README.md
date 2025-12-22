@@ -67,8 +67,8 @@ A full-stack Flask application designed for Windward School students and teacher
 ## 🔮 Future Roadmap (Winter Break Goals)
 
 *   [ ] **🤖 AI Assistant:** Implement a Natural Language Processing (NLP) chatbot to answer questions about the schedule (e.g., "Is there school next Friday?").
-*   [x] **☁️ Deployment:** Host the application on the web so students can access it from their phones.
-*   [ ] **🎨 UI Polish:** Upgrade the frontend with a CSS framework for a mobile-responsive design.
+*   [x] **☁️ Deployment:** Hosted on Render with a production-ready web server (Gunicorn).
+*   [x] **🎨 UI Polish:** Refactored frontend to use a centralized CSS stylesheet and base template for a consistent, professional, dark-mode theme.
 
 ## 📄 License
 

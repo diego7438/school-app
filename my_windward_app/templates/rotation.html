@@ -1,31 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>
-            Daily Rotation Checker
-        </title>
-        <style>
-            body { font-family: sans-serif; max-width: 500px; margin: 50px auto; padding: 20px;
-            border: 1px solid #ccc; border-radius: 5px; text-align: center; }
-            input { padding: 10px; width: 60px; text-align: center; font-size: 1.2em; }
-            button { padding: 10px 20px; font-size: 1.1em; background-color: #007bff; color: white;
-            border: none; border-radius: 5px; cursor: pointer; }
-            button:hover { background-color: #0056b3; }
-            button#today-btn { background-color: #28a745; margin-left: 10px; }
-            button#today-btn:hover { background-color: #218838; }
-            #result { margin-top: 30px; font-size: 1.5em; font-weight: bold; color: #333; min-height: 50px; }
-            .day-name { color: #666; font-size: 0.8em; display: block; margin-top: 5px; }
-        </style>
-    </head>
-    <body>
+{% extends "base.html" %}
+
+{% block title %}Daily Rotation Checker{% endblock %}
+
+{% block content %}
+
         <h1>📅 Schedule Checker</h1>
         <p><a href="/api/profile/">&larr; Back to Profile</a></p>
 
         <p>Enter a date to see the rotation (m/d):</p>
 
-        <div>
+        <div style="text-align: center;">
             <input type="number" id="month" placeholder="MM" min="1" max="12"> /
             <input type="number" id="day" placeholder="DD" min="1" max="31">
         </div>
@@ -33,7 +17,7 @@
         <button id="check-btn">Check Schedule</button>
         <button id="today-btn">Today</button>
 
-        <div id="result"></div>
+        <div id="result" style="text-align: center; margin-top: 20px; font-size: 1.5em;"></div>
 
         <script>
             const checkBtn = document.getElementById('check-btn');
@@ -82,5 +66,4 @@
                 checkBtn.click();
             })
         </script>
-    </body>
-</html>
+{% endblock %}
