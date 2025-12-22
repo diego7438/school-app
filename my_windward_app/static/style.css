@@ -16,6 +16,7 @@ body {
     color: var(--text-color);
     margin: 0;
     padding: 20px;
+    animation: fadeIn 0.8s ease-out;
 }
 
 /* --- Main Layout & Containers --- */
