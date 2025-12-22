@@ -1,7 +1,6 @@
 from flask import Blueprint, render_template, request, jsonify
 from .rotation import get_rotation_for_date
 import datetime as dt
-from time import sleep
 
 bp = Blueprint('chat', __name__, url_prefix='/chat')
 
@@ -33,9 +32,6 @@ def index():
 def ask():
     data = request.get_json()
     message = data.get('message', '').lower()
-
-    # We add a small delay to make the "Bot is thinking..." UI feel more natural.
-    sleep(0.5)
 
     # Default response
     response = "I'm not advanced enough to understand that yet 🦁. " \
