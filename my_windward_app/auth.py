@@ -106,8 +106,14 @@ def register():
     # if its a GET request, just show the registration page
     return render_template('register.html')
 
-@bp.route('/login', methods=['POST'])
+@bp.route('/login', methods=['GET', 'POST'])
 def login():
+
+    # If it's a GET request, just show the login form
+    if request.method == 'GET':
+        return render_template('login.html')
+    
+    
     # get the username and password from the JSON data
     data = request.get_json()
     username = data.get('username')

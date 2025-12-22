@@ -4,6 +4,9 @@
 
 {% block content %}
 
+<!-- Auto generated avatar based on username -->
+ <img src="https://appi.dicebear.com/9.x/notionists/svg?seed={{ user.username }}" class = "avatar avatar-large" alt = "Avatar">
+
         <h1>Welcome, {{ user.username }}!</h1>
         <p>This is your user profile page.</p>
         <p><strong>User ID:</strong> {{ user.id }}</p>

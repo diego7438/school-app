@@ -21,7 +21,10 @@
                     {% for student in students %}
                     <tr>
                         <td>{{ student['id'] }}</td>
-                        <td>{{ student['username'] }}</td>
+                        <td>
+                            <img src="https://api.dicebear.com/9.x/notionists/svg?seed={{ student['username'] }}" class="avatar" alt="Avatar">
+                            {{ student['username'] }}
+                        </td>
                         <td>
                             <!-- Inline form to update the grade -->
                             <form action="/teacher/grade" method="post" style="margin: 0;">
