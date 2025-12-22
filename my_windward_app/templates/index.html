@@ -1,54 +1,48 @@
 {% extends "base.html" %}
 
-{% block title %}Login{% endblock %}
+{% block title %}Welcome{% endblock %}
 
 {% block content %}
 
-        <h1>Login</h1>
-        <form id="login-form">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" required>
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
-            <div class="checkbox-wrapper">
-                <input type="checkbox" id="remember" name="remember">
-                <label for="remember">Remember Me</label>
+    <div class="intro-container">
+        <div class="hero">
+            <h1 class="flashy-title">Windward App 🦁</h1>
+            <p class="subtitle">The ultimate student companion for the 2025-26 school year.</p>
+            <a href="/auth/login" class="cta-button">Login / Get Started</a>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>📅 Smart Schedule</h3>
+                <p>Instantly check the rotation for any date. We handle holidays, weekends, and weird schedule days automatically.</p>
             </div>
-            <button type="submit">Login</button>
-        </form>
-        <div id="message"></div>
-        <p><a href="/auth/register">Don't have an account? Register here.</a></p>
-    
-    <script>
-        // get references to the form and the message display area
-        const loginForm = document.getElementById('login-form');
-        const messageDiv = document.getElementById('message');
+            <div class="feature-card">
+                <h3>🤖 AI Assistant</h3>
+                <p>Ask our custom-built AI questions like "Is there school next Friday?" and get instant answers.</p>
+            </div>
+            <div class="feature-card">
+                <h3>📊 Grade Tracking</h3>
+                <p>Teachers can manage rosters and grades directly from their dashboard with a clean, modern interface.</p>
+            </div>
+        </div>
 
-        // add an event listener for the form's 'submit' event
-        loginForm.addEventListener('submit', async (event) => {
-            // prevent the default form submission which refreshes the page
-            event.preventDefault();
+        <div class="info-section">
+            <h2>How it Works</h2>
+            <p>
+                Built with <strong>Python & Flask</strong>, this app uses a custom algorithm to calculate the daily rotation based on the official school calendar. 
+                Data is securely stored using hashed passwords and session management.
+            </p>
+            
+            <h2>What it Can't Do</h2>
+            <ul style="text-align: left; max-width: 400px; margin: 0 auto;">
+                <li>❌ Do your homework for you</li>
+                <li>❌ Guarantee you an A in Physics</li>
+                <li>❌ Get you a date to prom</li>
+            </ul>
+        </div>
 
-            // create a data object from the form fields
-            const formData = new FormData(loginForm);
-            const data = Object.fromEntries(formData.entries());
+        <br><br>
+        <p><small>Created by Diego Anderson for Honors Software Engineering</small></p>
+    </div>
 
-            // send the username/password to our /auth/login API endpoint
-            const response = await fetch('/auth/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            });
-
-            const result = await response.json();
-
-            if (response.ok) {
-                // if the response was successful (status 200-299), redirect to the profile page
-                window.location.href = '/api/profile/';
-            } else {
-                messageDiv.textContent = result.error;
-                messageDiv.style.color = 'red';
-            }
-        });
-    </script>
 {% endblock %}

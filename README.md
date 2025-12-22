@@ -12,6 +12,7 @@ A full-stack Flask application designed for Windward School students and teacher
 *   **🤖 AI Chatbot:** Smart assistant that answers questions about the schedule (e.g., "What is the rotation tomorrow?" or "Is there school on Monday?").
 *   **📢 Announcements Board:** Digital bulletin board for school news.
 *   **📊 Teacher Dashboard:** Interface for teachers to manage student grades.
+*   **🎨 Modern UI:** Flashy landing page and auto-generated user avatars.
 
 ## 🛠️ Tech Stack
 
