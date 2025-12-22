@@ -19,6 +19,7 @@
         <p><strong>Role:</strong> {{ user.role }}</p>
         <p><a href="/api/announcements/">View Announcements</a></p>
         <p><a href="/api/rotation/">Check Daily Schedule</a></p>
+        <p><a href="/chat/"></a>🤖 Ask the AI Assistant</p>
 
         <!-- Show link to teacher dashboard only if user is a teacher -->
         {% if user.role == 'teacher' %}

@@ -41,4 +41,7 @@ def create_app():
     from . import auth
     app.register_blueprint(auth.bp)
 
+    from . import chat
+    app.register_blueprint(chat.bp)
+
     return app

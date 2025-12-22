@@ -56,7 +56,7 @@ A full-stack Flask application designed for Windward School students and teacher
 
 *   **Build Command:** `pip install -r requirements.txt && python3 init_db.py`
     *   *Note: This installs dependencies and resets the database.*
-*   **Start Command:** `gunicorn "my_windward_app:create_app()"`
+*   **Start Command:** `gunicorn "my_windward_app:create_app()" --bind 0.0.0.0:$PORT`
 
 ## 🔮 Future Roadmap (Winter Break Goals)
 
