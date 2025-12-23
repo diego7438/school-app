@@ -151,6 +151,10 @@ def login():
     # but if there was an error, return it
     return jsonify({"error": error}), 401 # 401 is the unathourized status code
 
+@bp.route('/forgot-password')
+def forgot_password():
+    return render_template('forgot_password.html')
+
 @bp.route('/logout', methods=['POST'])
 def logout():
     # clear the current session, including the user_id
