@@ -13,6 +13,8 @@ class PostgresWrapper:
     A helper class that makes PostgreSQL look and act like SQLite.
     This allows us to switch databases without rewriting the whole app.
     """
+    IntegrityError = psycopg2.IntegrityError
+
     def __init__(self, db_url):
         self.conn = psycopg2.connect(db_url)
 
@@ -55,5 +57,7 @@ def get_db_connection():
                 detect_types=sqlite3.PARSE_DECLTYPES
             )
             g.db.row_factory = sqlite3.Row
+            # Add IntegrityError to the connection so auth.py can access db.IntegrityError
+            g.db.IntegrityError = sqlite3.IntegrityError
 
     return g.db
