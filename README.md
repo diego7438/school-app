@@ -71,6 +71,7 @@ A full-stack Flask application designed for Windward School students and teacher
 *   [x] **🤖 AI Assistant:** Implement a Natural Language Processing (NLP) chatbot to answer questions about the schedule (e.g., "Is there school next Friday?").
 *   [x] **☁️ Deployment:** Hosted on Render with a production-ready web server (Gunicorn).
 *   [x] **🎨 UI Polish:** Refactored frontend to use a centralized CSS stylesheet and base template for a consistent, professional, dark-mode theme.
+*   [x] **🧪 Unit Testing:** Implemented automated test suite (`test_rotation.py`) to verify calendar algorithm accuracy.
 
 ## 📄 License
 
