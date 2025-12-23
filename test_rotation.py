@@ -8,7 +8,7 @@ class testRotationLogic(unittest.TestCase):
         """Test that Aug 25, 2025 is Day 1 (Monday)"""
         # Aug 25, 2025 is a Monday. Should be Day 1. 
         result = get_rotation_for_date(8, 25)
-        self.assertEqual(result, 1, (1, 'mon'))
+        self.assertEqual(result, (1, 'mon'))
 
     def test_weekend(self):
         """Test that a Saturday returns None"""
@@ -30,6 +30,6 @@ class testRotationLogic(unittest.TestCase):
         result = get_rotation_for_date(9, 2)
         self.assertEqual(result, (6, 'tue'))
 
-    if __name__ == '__main__':
-        print("🦁 Running Windward App Logic Tests...")
-        unittest.main()
+if __name__ == '__main__':
+    print("🦁 Running Windward App Logic Tests...")
+    unittest.main()
