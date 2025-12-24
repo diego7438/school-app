@@ -6,7 +6,13 @@ from flask import current_app, g
 
 class CustomCursor(RealDictCursor):
     """A cursor that can store the last inserted ID."""
-    pass
+    @property
+    def lastrowid(self):
+        return getattr(self, '_lastrowid', None)
+
+    @lastrowid.setter
+    def lastrowid(self, value):
+        self._lastrowid = value
 
 class PostgresWrapper:
     """
