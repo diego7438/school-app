@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-container">
+    <header style= "margin-bottom: 40px; border-bottom: 1px solid #30363d; padding-bottom: 20px;">
+        <h1>Welcome, {{ g.user['username'] }}!</h1>
+        <p style= "color: #8b949e;">Role: <span style= "text-transform: capitalize; color: #58a6ff;">{{ g.user['role'] }}</span></p>
+    </header>
+
+    <div class="grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+        <!-- Schedule Card -->
+         <div class="card" style="background-color: #161b22; padding: 20px; border-radius: 6px; border: 1px solid #30363d;">
+            <h3 style="margin-top: 0;">📅 Today's Schedule</h3>
+            <p><em>Schedule parsing coming soon...</em></p>
+            <!-- We will hook up the rotation logic here next -->
+         </div>
+
+         <!-- Announcements Card -->
+          <div class="card" style="background-color: #161b22; padding: 20px; border-radius: 6px; border: 1px solid #30363d;">
+            <h3 style="margin-top: 0;">📢 Announcements</h3>
+            <p>No new announcements.</p>
+          </div>
+    </div>
+</div>
+
+{% endblock %}
