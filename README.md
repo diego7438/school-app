@@ -1,78 +1,66 @@
-# Windward School App 🦁
+# Windward School Companion App 🦁
 
-A full-stack Flask application designed for Windward School students and teachers to manage schedules, announcements, and grades.
+A comprehensive web application designed to help Windward School students and faculty manage daily schedules, announcements, and academic tracking.
 
-## 🚀 Features
+## 🌐 Live Access
 
-*   **🔐 Secure Authentication:** Login and registration system with password hashing.
-*   **👤 Role-Based Access:**
-    *   **Students:** View daily rotation, check announcements, see profile.
-    *   **Teachers:** Post announcements, view student roster, assign grades.
-*   **📅 Daily Rotation Checker:** Automatically calculates the specific class rotation (Days 1-6) for any date in the 2025-26 school year, handling holidays and weekends.
-*   **🤖 AI Chatbot:** Smart assistant that answers questions about the schedule (e.g., "What is the rotation tomorrow?" or "Is there school on Monday?").
-*   **📢 Announcements Board:** Digital bulletin board for school news.
-*   **📊 Teacher Dashboard:** Interface for teachers to manage student grades.
-*   **🎨 Modern UI:** Flashy landing page and auto-generated user avatars.
+The application is deployed and accessible via the web:
+
+**🔗 [Windward Companion App](https://school-app-wza8.onrender.com)**
+
+*Note: The application is hosted on Render's free tier. It may take a minute to wake up if it hasn't been accessed recently.*
+
+## � Features
+
+*   **Dynamic Rotation Schedule:** Automatically calculates the daily rotation (Days 1-6) based on the current date, handling holidays and special schedules.
+*   **Role-Based Access:**
+    *   **Students:** View schedules, chat with the AI bot, and check grades.
+    *   **Teachers:** Post announcements, manage student grades, and view rosters.
+*   **AI Schedule Assistant:** A chatbot that answers natural language questions about the schedule (e.g., "What is the rotation for next Tuesday?").
+*   **Announcements System:** Digital bulletin board for teacher-posted updates.
+*   **Secure Authentication:** User registration and login with hashed passwords.
 
 ## 🛠️ Tech Stack
 
 *   **Backend:** Python, Flask
-*   **Database:** SQLite
-*   **Frontend:** HTML, CSS, JavaScript
+*   **Database:**
+    *   **Development:** SQLite (Local)
+    *   **Production:** PostgreSQL (Render)
+*   **Frontend:** HTML5, CSS3, JavaScript
+*   **Deployment:** Render Cloud Hosting
 
-## 📚 Architecture Concepts
+## 📂 Project Structure
 
-*   **Blueprints:** This project uses Flask Blueprints to organize code into modular components (e.g., `auth`, `teacher`, `chat`). This keeps the codebase clean and scalable, rather than having one massive file.
-*   **Application Factory:** We use the `create_app()` function to set up the app, which allows for better testing and configuration management.
-*   **Decorators:** Custom Python decorators (like `@role_required`) are used to enforce security permissions on specific routes.
+*   `my_windward_app/`: Main application source code.
+    *   `templates/`: HTML files for the frontend.
+    *   `static/`: CSS and JavaScript files.
+    *   `auth.py`: Handles user registration and login logic.
+    *   `db.py`: Database connection and management (SQLite/PostgreSQL).
+*   `init_db.py`: Script to initialize the database tables.
+*   `requirements.txt`: List of Python dependencies.
 
-## ⚙️ How to Run Locally
+## ⚙️ Local Setup
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/diego7438/school-app.git
-    cd school-app
+    git clone <repository-url>
+    cd my_windward_app
     ```
 
-2.  **Install Dependencies:**
+2.  **Install dependencies:**
     ```bash
     pip install -r requirements.txt
     ```
 
-3.  **Initialize the Database:**
-    Since the database file is not tracked in git, you must initialize it first:
+3.  **Initialize the database:**
     ```bash
     python3 init_db.py
     ```
 
-4.  **Set up the environment:**
+4.  **Run the application:**
     ```bash
-    # Mac/Linux
-    export FLASK_APP=my_windward_app
-    export FLASK_DEBUG=1
+    flask --app my_windward_app run --debug
     ```
 
-5.  **Run the server:**
-    ```bash
-    python3 -m flask run
-    ```
-
-6.  **Open in Browser:**
-    Go to `http://127.0.0.1:5000`
-
-## ☁️ Deployment (Render)
-
-*   **Build Command:** `pip install -r requirements.txt && python3 init_db.py`
-    *   *Note: This installs dependencies and resets the database.*
-*   **Start Command:** `gunicorn "my_windward_app:create_app()" --bind 0.0.0.0:$PORT`
-
-## 🔮 Future Roadmap (Winter Break Goals)
-
-*   [x] **🤖 AI Assistant:** Implement a Natural Language Processing (NLP) chatbot to answer questions about the schedule (e.g., "Is there school next Friday?").
-*   [x] **☁️ Deployment:** Hosted on Render with a production-ready web server (Gunicorn).
-*   [x] **🎨 UI Polish:** Refactored frontend to use a centralized CSS stylesheet and base template for a consistent, professional, dark-mode theme.
-*   [x] **🧪 Unit Testing:** Implemented automated test suite (`test_rotation.py`) to verify calendar algorithm accuracy.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+## 📝 License
+Created by Diego Anderson for Honors Software Engineering.
