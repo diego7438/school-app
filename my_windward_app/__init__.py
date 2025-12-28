@@ -44,7 +44,6 @@ def create_app():
     from . import dashboard
     app.register_blueprint(dashboard.bp)
 
-
     from . import chat
     app.register_blueprint(chat.bp)
 

@@ -14,8 +14,22 @@
         <!-- Schedule Card -->
          <div class="card" style="background-color: #161b22; padding: 20px; border-radius: 6px; border: 1px solid #30363d;">
             <h3 style="margin-top: 0;">📅 Today's Schedule</h3>
-            <p><em>Schedule parsing coming soon...</em></p>
-            <!-- We will hook up the rotation logic here next -->
+            {% if rotation %}
+
+                <p style="font-size: 1.5em; font-weight: bold; color: #58a6ff; margin: 10px 0;">
+                    Rotation {{ rotation[0] }}
+                </p>
+
+                <p style="color: #8b949e; margin-top: 5px;">
+                    {{ date.strftime('%A, %B %d') }}
+                </p>
+
+            {% else %}
+                <p style="color: #8b949e; font-size: 1.1em; margin: 10px 0;">No School Today 🏖️</p>
+                <p style="font-size: 0.9em; color: #6e7681;">
+                    {{ date.strftime('%A, %B %d') }}
+                </p>
+            {% endif %}
          </div>
 
          <!-- Announcements Card -->
