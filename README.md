@@ -1,49 +1,31 @@
-# Windward School Companion App 🦁
+# Windward School Dashboard & AI Assistant 🦁
 
-A comprehensive web application designed to help Windward School students and faculty manage daily schedules, announcements, and academic tracking.
+A full-stack web application designed for Windward School students and teachers. It features a dynamic rotation schedule calculator, a teacher dashboard for grading, and an AI-powered chatbot that answers questions about the school calendar.
 
-## 🌐 Live Access
+## 🚀 Features
 
-The application is deployed and accessible via the web:
-
-**🔗 [Windward Companion App](https://school-app-wza8.onrender.com)**
-
-*Note: The application is hosted on Render's free tier. It may take a minute to wake up if it hasn't been accessed recently.*
-
-## � Features
-
-*   **Dynamic Rotation Schedule:** Automatically calculates the daily rotation (Days 1-6) based on the current date, handling holidays and special schedules.
-*   **Role-Based Access:**
-    *   **Students:** View schedules, chat with the AI bot, and check grades.
-    *   **Teachers:** Post announcements, manage student grades, and view rosters.
-*   **AI Schedule Assistant:** A chatbot that answers natural language questions about the schedule (e.g., "What is the rotation for next Tuesday?").
-*   **Announcements System:** Digital bulletin board for teacher-posted updates.
-*   **Secure Authentication:** User registration and login with hashed passwords.
+*   **Dynamic Schedule Parsing:** Automatically calculates the rotation day (1-6) based on the current date, handling weekends and holidays.
+*   **AI Chatbot:** A "smart" assistant that uses Regex and timezone-aware logic to answer natural language questions like *"What is the rotation on August 25?"* or *"Is there school tomorrow?"*.
+*   **User Roles:** Separate dashboards for **Students** (view schedule/grades) and **Teachers** (post announcements/edit grades).
+*   **Security:**
+    *   Password Hashing (Werkzeug)
+    *   Session Management
+    *   HTTP Security Headers (Clickjacking & XSS protection)
+    *   Input Sanitization
+*   **Timezone Awareness:** Server-side logic forces `America/Los_Angeles` time to ensure the schedule is accurate regardless of where the server is hosted.
 
 ## 🛠️ Tech Stack
 
 *   **Backend:** Python, Flask
-*   **Database:**
-    *   **Development:** SQLite (Local)
-    *   **Production:** PostgreSQL (Render)
-*   **Frontend:** HTML5, CSS3, JavaScript
-*   **Deployment:** Render Cloud Hosting
+*   **Database:** PostgreSQL (Production), SQLite (Dev)
+*   **Frontend:** HTML5, CSS3, JavaScript (Fetch API)
+*   **Deployment:** Render (Gunicorn WSGI)
 
-## 📂 Project Structure
-
-*   `my_windward_app/`: Main application source code.
-    *   `templates/`: HTML files for the frontend.
-    *   `static/`: CSS and JavaScript files.
-    *   `auth.py`: Handles user registration and login logic.
-    *   `db.py`: Database connection and management (SQLite/PostgreSQL).
-*   `init_db.py`: Script to initialize the database tables.
-*   `requirements.txt`: List of Python dependencies.
-
-## ⚙️ Local Setup
+## 📦 Installation
 
 1.  **Clone the repository:**
     ```bash
-    git clone <repository-url>
+    git clone https://github.com/yourusername/my_windward_app.git
     cd my_windward_app
     ```
 
@@ -54,7 +36,7 @@ The application is deployed and accessible via the web:
 
 3.  **Initialize the database:**
     ```bash
-    python3 init_db.py
+    flask --app my_windward_app init-db
     ```
 
 4.  **Run the application:**
@@ -62,5 +44,9 @@ The application is deployed and accessible via the web:
     flask --app my_windward_app run --debug
     ```
 
-## 📝 License
-Created by Diego Anderson for Honors Software Engineering.
+## 🛡️ Security Note
+
+This application implements **OWASP** best practices, including `X-Frame-Options` to prevent clickjacking and strict input validation on the chat interface to prevent DoS attacks.
+
+---
+*Built by Diego Anderson for Honors Software Engineering.*

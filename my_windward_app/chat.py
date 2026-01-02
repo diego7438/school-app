@@ -18,6 +18,14 @@ MONTHS = {
 def get_next_day_of_week(day_name, today):
     """
     Calculates the date of the next occurrence of a given day of the week.
+
+    Args: 
+        day_name (str): The name of the day (e.g., 'monday').
+        today (datetime.date): The reference date to start counting from. 
+
+    Returns:
+        datetime.date: The date object for the upcoming day. 
+    
     """
     days_of_week = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday',
                     'saturday', 'sunday']
@@ -38,6 +46,15 @@ def index():
 
 @bp.route('/ask', methods=['POST'])
 def ask():
+    """
+    Processes user messages and returns a JSON response.
+
+    Features: 
+    - Input sanitization (length checks, type checks).
+    - Timezone awareness (converts server time to LA time).
+    - Intent recognition via keyword matching and Regex. 
+
+    """
     # Security: Ensure request is JSON
     if not request.is_json:
         return jsonify({'error': 'Invalid Content-Type'}), 400

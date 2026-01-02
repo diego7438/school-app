@@ -47,11 +47,18 @@ def create_app():
     from . import chat
     app.register_blueprint(chat.bp)
 
-    # Pro Level Security: Add Security Headers to every response
+    # --- Security Configuration ---
+    # We inject HTTP headers into every response to protect against common web attacks. 
+
     @app.after_request
     def add_security_headers(response):
-        response.headers['X-Content-Type-Options'] = 'nosniff'
+        # Prevent Clickjacking (loading site in an iframe)
         response.headers['X-Frame-Options'] = 'SAMEORIGIN'
+
+        # Prevent MIME-sniffing
+        response.headers['X-Content-Type-Options'] = 'nosniff'
+
+        # Enable XSS filtering in browsers
         response.headers['X-XSS-Protection'] = '1; mode=block'
         return response
 
