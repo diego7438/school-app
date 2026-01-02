@@ -47,4 +47,12 @@ def create_app():
     from . import chat
     app.register_blueprint(chat.bp)
 
+    # Pro Level Security: Add Security Headers to every response
+    @app.after_request
+    def add_security_headers(response):
+        response.headers['X-Content-Type-Options'] = 'nosniff'
+        response.headers['X-Frame-Options'] = 'SAMEORIGIN'
+        response.headers['X-XSS-Protection'] = '1; mode=block'
+        return response
+
     return app

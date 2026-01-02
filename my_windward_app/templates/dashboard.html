@@ -8,6 +8,7 @@
     <header style= "margin-bottom: 40px; border-bottom: 1px solid #30363d; padding-bottom: 20px;">
         <h1>Welcome, {{ g.user['username'] }}!</h1>
         <p style= "color: #8b949e;">Role: <span style= "text-transform: capitalize; color: #58a6ff;">{{ g.user['role'] }}</span></p>
+        <button id="logout-button" style="background-color: #21262d; color: #c9d1d9; border: 1px solid #30363d; padding: 5px 10px; border-radius: 6px; cursor: pointer;">Logout</button>
     </header>
 
     <div class="grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
@@ -54,4 +55,17 @@
     </div>
 </div>
 
+<script>
+    const logoutButton = document.getElementById('logout-button');
+    if (logoutButton) {
+        logoutButton.addEventListener('click', async () => {
+            const response = await fetch('/auth/logout', {
+                method: 'POST'
+            });
+            if (response.ok) {
+                window.location.href = '/auth/login';
+            }
+        });
+    }
+</script>
 {% endblock %}
