@@ -3,8 +3,43 @@
 {% block title %}Windward AI Chat{% endblock %}
 
 {% block content %}
+
+<style>
+    /* Animation for the typing dots */
+    .typing-indicator {
+        display: flex;
+        gap: 5px; 
+        padding: 10px 15px; 
+        background-color: #161b22;
+        border-radius: 6px;
+        width: fit-content;
+        margin-bottom: 10px;
+    }
+
+    .dot {
+        width: 8px; 
+        height: 8px;
+        background-color: #8b949e;
+        border-radius: 50%;
+        animation: bounce 1.4s infinite ease-in-out both;
+    }
+
+    .dot:nth-child(1) { animation-delay: -0.32s; }
+    .dot:nth-child(2) { animation-delay: -0.16s; }
+    @keyframes bounce {
+        0%, 80%, 100% { transform: scale(0); }
+        40% { transform: scale(1); }
+    }
+</style>
+
+
 <h1>🦁 Windward Bot</h1>
-<p><a href="/api/profile/">&larr; Back to Profile</a></p>
+
+<div style="display: flex; justify-content: space-between; align-items: center;">
+    <p><a href="/dashboard/">&larr; Back to Dashboard</a></p>
+    <button id="clear-btn" style="background-color: #da3633; padding: 5px 10px; border: none; border-radius: 6px; color: white;
+    cursor: pointer;">Clear Chat</button>
+</div>
 
         <div class="chat-container">
             <div class="chat-box" id="chat-box">
@@ -22,6 +57,7 @@
             const form = document.getElementById('chat-form');
             const chatBox = document.getElementById('chat-box');
             const input = document.getElementById('user-input');
+            const clearBtn = document.getElementById('clear-btn');
 
             function addMessage(text, sender) {
                 const messageDiv = document.createElement('div');
@@ -79,6 +115,13 @@
                 const data = await response.json();
                 addMessage(data.response, 'bot');
 
+            });
+
+            // Clear Chat Logic
+            clearBtn.addEventListener('click', () => {
+                chatBox.innterHtml = '';
+                // Add the welcome message back so it's not empty
+                addMessage('Chat cleated. How can I help', 'bot');
             });
 
         </script>
