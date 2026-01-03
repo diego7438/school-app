@@ -35,9 +35,6 @@ def create_app():
     from . import rotation
     app.register_blueprint(rotation.bp)
 
-    from . import profiles
-    app.register_blueprint(profiles.bp)
-
     from . import auth
     app.register_blueprint(auth.bp)
 
