@@ -2,6 +2,13 @@
 
 A full-stack web application designed for Windward School students and teachers. It features a dynamic rotation schedule calculator, a teacher dashboard for grading, and an AI-powered chatbot that answers questions about the school calendar.
 
+🌐 Live Website
+The application is deployed and accessible online:
+
+👉 https://school-app-wza8.onrender.com
+
+Users can explore the dashboard and AI assistant directly without local setup.
+
 ## 🚀 Features
 
 *   **Dynamic Schedule Parsing:** Automatically calculates the rotation day (1-6) based on the current date, handling weekends and holidays.
